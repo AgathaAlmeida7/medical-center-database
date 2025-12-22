@@ -1,0 +1,1 @@
+# detalha restricoes e regras de integridade

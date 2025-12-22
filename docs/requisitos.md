@@ -1,0 +1,1 @@
+# descreve funcionalidades e informações do banco
