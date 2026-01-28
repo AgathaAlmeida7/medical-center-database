@@ -9,7 +9,7 @@ create table paciente(
 
 );
 
-
+ -- esse sql e sql padrao ou ja visando no sgbd postgresql?
 create table medico(
     id serial primary key,
     nome_completo varchar(150) not null,
@@ -17,7 +17,7 @@ create table medico(
     telefone varchar(20)
 );
 
-create table especialiade(
+create table especialidade(
     id serial primary key,
     nome varchar(100) not null unique,
     descricao text
@@ -33,16 +33,18 @@ create table medico_especialidade(
 );
 
 create table consulta(
-    id_serial primary key,
-    id_paciente int not null,
-    id_medico int not null,
-    tipo varchar(50) not null,
+    id serial primary key,
+    paciente_id int not null,
+    medico_id int not null,
+    especialidade_id int not null,
+    data_consulta date not null,
+    hora_consulta time not null,
     status varchar(30) not null,
-    data date not null,
-    hora time not null,
-    foregein key (id_paciente) referecens paciente(id),
-    foreign key(id_medico) references medico(id)
-)
+    observacoes text,
+    foreign key (paciente_id) references paciente(id),
+    foreign key (medico_id) references medico(id),
+    foreign key (especialidade_id) references especialidade(id)
+);
 
 create table pagamento(
     id serial primary key,
